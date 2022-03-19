@@ -1,18 +1,20 @@
 const Header = () => {
   return (
-    <div className="flex items-center justify-between ">
-      <nav className="inline-flex list-none gap-8">
-        <li>Home</li>
-        <li>NavItem</li>
-        <li>NavItem</li>
-        <li>NavItem</li>
+    <header className="flex items-center justify-between ">
+      <nav>
+        <ul className="inline-flex list-none gap-8 tracking-wider">
+          <li>Home</li>
+          <li>NavItem</li>
+          <li>NavItem</li>
+          <li>NavItem</li>
+        </ul>
       </nav>
 
-      <div className="inline-flex gap-4">
+      <div className="inline-flex gap-4 tracking-wider">
         <div>Searchbar</div>
         <div>Profile</div>
       </div>
-    </div>
+    </header>
   )
 }
 

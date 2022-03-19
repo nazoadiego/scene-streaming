@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Scene</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />

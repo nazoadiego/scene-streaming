@@ -1,11 +1,14 @@
 import { NextPage } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
+import Layout from '../../components/Layout'
 
 const ListPage: NextPage = () => {
   return (
-    <div className="min-h-screen bg-[#101010] py-2 text-white">
+    <Layout>
       <Link href="/">Home</Link>
-    </div>
+      <div className="grid grid-cols-8"></div>
+    </Layout>
   )
 }
 

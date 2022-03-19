@@ -21,9 +21,14 @@ type Movie = {
   vote_count: number
 }
 
+type List = {
+  listTitle: string
+  listID: number
+}
+
 interface HomeProps {
   movies: Movie[]
-  list: any
+  list: List
 }
 
 const Home: NextPage<HomeProps> = ({ movies, list }) => {
