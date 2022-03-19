@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, FC } from 'react'
 import { motion } from 'framer-motion'
 import MovieCard from './MovieCard'
+import Link from 'next/link'
 
 type Movie = {
   adult: boolean
@@ -20,14 +21,20 @@ type Movie = {
   vote_count: number
 }
 
+type List = {
+  listTitle: string
+  listID: number
+}
+
 interface MovieListProps {
-  title: string
+  list: List
   movies: Movie[]
 }
 
-const MovieList: FC<MovieListProps> = ({ title, movies }) => {
+const MovieList: FC<MovieListProps> = ({ list, movies }) => {
   const [width, setWidth] = useState(0)
   const carrousel = useRef<HTMLDivElement>(null)
+  const { listTitle, listID } = list
 
   useEffect(() => {
     // carrousel.current.scrollWidth is the total width of available scrolling
@@ -38,7 +45,13 @@ const MovieList: FC<MovieListProps> = ({ title, movies }) => {
 
   return (
     <>
-      <h3 className="text-3xl uppercase">{title}</h3>
+      <div className="flex justify-between">
+        <h3 className="text-3xl uppercase">{listTitle}</h3>
+        <Link href={`/list/${listID}`}>
+          <a className="text-xl">See more</a>
+        </Link>
+      </div>
+
       <motion.div
         ref={carrousel}
         className="carrousel cursor-grab overflow-hidden"

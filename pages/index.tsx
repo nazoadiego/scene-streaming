@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import MovieList from '../components/MovieList'
 import Hero from '../components/Hero'
+import Layout from '../components/Layout'
 
 type Movie = {
   adult: boolean
@@ -23,44 +23,22 @@ type Movie = {
 
 interface HomeProps {
   movies: Movie[]
-  listTitle: string
-  listID: number
+  list: any
 }
 
-const Home: NextPage<HomeProps> = ({ movies, listTitle }) => {
-  console.log(listTitle)
+const Home: NextPage<HomeProps> = ({ movies, list }) => {
   return (
-    <div className="min-h-screen bg-[#101010] py-2 text-white">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="px-20">
-        <div className="flex items-center justify-between">
-          <nav className="inline-flex list-none gap-8">
-            <li>Home</li>
-            <li>NavItem</li>
-            <li>NavItem</li>
-            <li>NavItem</li>
-          </nav>
-
-          <div className="inline-flex gap-4">
-            <div>Searchbar</div>
-            <div>Profile</div>
-          </div>
-        </div>
-        <div className="h-[60vh] w-auto">
-          <Hero />
-        </div>
-        <div className="space-y-6">
-          <MovieList title={listTitle} movies={movies} />
-          <MovieList title={listTitle} movies={movies} />
-          <MovieList title={listTitle} movies={movies} />
-          <MovieList title={listTitle} movies={movies} />
-        </div>
-      </main>
-    </div>
+    <Layout>
+      <div className="h-[60vh] w-auto">
+        <Hero />
+      </div>
+      <div className="space-y-6">
+        <MovieList list={list} movies={movies} />
+        <MovieList list={list} movies={movies} />
+        <MovieList list={list} movies={movies} />
+        <MovieList list={list} movies={movies} />
+      </div>
+    </Layout>
   )
 }
 
@@ -74,8 +52,10 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       movies: data.items,
-      listTitle: data.name,
-      listID: data.id,
+      list: {
+        listTitle: data.name,
+        listID: data.id,
+      },
     },
   }
 }
