@@ -2,11 +2,30 @@ import { useState, useEffect, useRef, MutableRefObject } from 'react'
 import { motion } from 'framer-motion'
 import MovieCard from './MovieCard'
 
-interface MovieListProps {
+type Movie = {
+  adult: boolean
+  backdrop_path: string | null
+  genre_ids: number[]
+  id: string
+  media_type: string
+  original_language: string
+  original_title: string
+  overview: string
+  popularity: number
+  poster_path: string | null
+  release_date: string
   title: string
+  video: boolean
+  vote_average: number
+  vote_count: number
 }
 
-const MovieList: React.FC<MovieListProps> = ({ title }) => {
+interface MovieListProps {
+  title: string
+  movies: Movie[]
+}
+
+const MovieList: React.FC<MovieListProps> = ({ title, movies }) => {
   const [width, setWidth] = useState(0)
   const carrousel = useRef<HTMLDivElement>(null)
 
@@ -30,14 +49,9 @@ const MovieList: React.FC<MovieListProps> = ({ title }) => {
           dragConstraints={{ right: 0, left: -width }}
           className="inner-carrousel mr-2 flex gap-4"
         >
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
+          {movies.slice(0, 10).map((movie) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
         </motion.div>
       </motion.div>
     </>
