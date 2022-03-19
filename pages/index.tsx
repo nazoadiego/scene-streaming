@@ -50,10 +50,10 @@ const Home: NextPage<HomeProps> = ({ movies, listTitle }) => {
             <div>Profile</div>
           </div>
         </div>
-        <div className="flex h-[60vh] items-center">
+        <div className="h-[60vh] w-auto">
           <Hero />
         </div>
-        <div>
+        <div className="space-y-6">
           <MovieList title={listTitle} movies={movies} />
           <MovieList title={listTitle} movies={movies} />
           <MovieList title={listTitle} movies={movies} />

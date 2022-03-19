@@ -5,8 +5,12 @@
 .item {
   min-height: 24rem;
   min-width: 18rem;
+  border-radius: 2rem;
+  z-index: 1;
+}
+
+.item div {
   width: 100%;
   height: 100%;
   border-radius: 2rem;
-  z-index: 1;
 }

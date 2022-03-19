@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, MutableRefObject } from 'react'
+import { useState, useEffect, useRef, FC } from 'react'
 import { motion } from 'framer-motion'
 import MovieCard from './MovieCard'
 
@@ -25,7 +25,7 @@ interface MovieListProps {
   movies: Movie[]
 }
 
-const MovieList: React.FC<MovieListProps> = ({ title, movies }) => {
+const MovieList: FC<MovieListProps> = ({ title, movies }) => {
   const [width, setWidth] = useState(0)
   const carrousel = useRef<HTMLDivElement>(null)
 
