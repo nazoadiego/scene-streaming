@@ -2,6 +2,8 @@ import type { GetStaticProps, NextPage } from 'next'
 import { getMoviesList } from '../../utils/request'
 import Layout from '../../components/Layout'
 import MovieCard from '../../components/MovieCard'
+import { useState } from 'react'
+import Pagination from '../../components/Pagination'
 
 type Movie = {
   adult: boolean
@@ -33,22 +35,38 @@ interface ListPageProps {
 }
 
 const ListPage: NextPage<ListPageProps> = ({ listTitle, movies }) => {
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage, setPostsPerPage] = useState(12)
+
+  // pagination
+  const indexLastPost = currentPage * postsPerPage // page 1 * 12 is 12, page 2 * 12 is 24
+  const indexFirstPost = indexLastPost - postsPerPage // 12 - 12 = 0, 24 - 12 = 12
+  const currentMovies = movies.slice(indexFirstPost, indexLastPost)
+
+  // change page
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
+
   return (
     <Layout>
       <div>
         <h2>{listTitle}</h2>
         <ul className="grid grid-cols-6 gap-2">
-          {movies.map((movie) => (
+          {currentMovies.map((movie) => (
             <MovieCard movie={movie} key={movie.id}></MovieCard>
           ))}
         </ul>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={movies.length}
+          paginate={paginate}
+        />
       </div>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const list = (await getMoviesList(2)) || []
+  const list = (await getMoviesList(1)) || []
 
   return { props: list }
 }
