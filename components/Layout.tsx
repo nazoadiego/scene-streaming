@@ -1,13 +1,11 @@
-import Header from './Header'
+import Header from './Header/Header'
 
 const Layout = ({ children }: any) => {
   return (
-    <main className="min-h-screen px-20 py-2">
-      <div className="py-4">
-        <Header />
-      </div>
-      {children}
-    </main>
+    <>
+      <Header />
+      <main className="min-h-screen px-16">{children}</main>
+    </>
   )
 }
 
