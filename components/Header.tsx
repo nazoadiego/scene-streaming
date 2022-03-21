@@ -12,7 +12,6 @@ const Header = () => {
 
       <div className="inline-flex gap-4 tracking-wider">
         <div>Searchbar</div>
-        <div>Profile</div>
       </div>
     </header>
   )
