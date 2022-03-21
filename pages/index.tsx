@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from 'next'
 import MovieList from '../components/MovieList'
 import Hero from '../components/Hero'
 import Layout from '../components/Layout'
+import { getMoviesList } from '../utils/request'
 
 type Movie = {
   adult: boolean
@@ -48,21 +49,9 @@ const Home: NextPage<HomeProps> = ({ movies, list }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const API_Key = process.env.TMDB_API_KEY
-  const res = await fetch(
-    `https://api.themoviedb.org/3/list/1?api_key=${API_Key}&language=en-US`
-  )
-  const data = await res.json()
+  const list = (await getMoviesList()) || []
 
-  return {
-    props: {
-      movies: data.items,
-      list: {
-        listTitle: data.name,
-        listID: data.id,
-      },
-    },
-  }
+  return { props: list }
 }
 
 export default Home
