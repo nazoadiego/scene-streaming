@@ -25,33 +25,42 @@ type Movie = {
 type List = {
   listTitle: string
   listID: number
+  movies: Movie[]
 }
 
 interface HomeProps {
-  movies: Movie[]
-  list: List
+  lists: List[]
 }
 
-const Home: NextPage<HomeProps> = ({ movies, list }) => {
+const Home: NextPage<HomeProps> = ({ lists }) => {
   return (
     <Layout>
       <div className="h-[60vh] w-auto">
         <Hero />
       </div>
       <div className="space-y-6">
-        <MovieList list={list} movies={movies} />
-        <MovieList list={list} movies={movies} />
-        <MovieList list={list} movies={movies} />
-        <MovieList list={list} movies={movies} />
+        {lists.map((list) => (
+          <MovieList
+            movies={list.movies}
+            listTitle={list.listTitle}
+            listID={list.listID}
+            key={list.listID}
+          />
+        ))}
       </div>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const list = (await getMoviesList()) || []
+  const lists = []
+  const list = (await getMoviesList(1)) || []
+  const list2 = (await getMoviesList(2)) || []
+  const list3 = (await getMoviesList(3)) || []
 
-  return { props: list }
+  lists.push(list, list2, list3)
+
+  return { props: { lists: lists } }
 }
 
 export default Home

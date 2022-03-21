@@ -19,7 +19,7 @@
 :root {
   --bg: #242526;
   --bg-accent: #484a4d;
-  --bg-accent2: #525357
+  --bg-accent2: #525357;
   --text-color: #dadce1;
   --nav-size: 66px;
   --border: 1px solid #474a4d;
@@ -94,7 +94,6 @@
 .menu-item .icon-button {
   margin-right: 0.5rem;
 }
-
 
 .menu-item .icon-button:hover {
   filter: none;

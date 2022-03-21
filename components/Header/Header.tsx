@@ -9,7 +9,9 @@ const Header = () => {
     <header>
       <Navbar>
         <NavItem>
-          <Link href="/">Home</Link>
+          <Link href="/" passHref>
+            Home
+          </Link>
         </NavItem>
         <NavItem>
           <Link href="/list">Lists</Link>

@@ -1,17 +1,15 @@
 const API_Key = process.env.TMDB_API_KEY
 
-export const getMoviesList = async () => {
+export const getMoviesList = async (listID) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/list/1?api_key=${API_Key}&language=en-US`
+    `https://api.themoviedb.org/3/list/${listID}?api_key=${API_Key}&language=en-US`
   )
   const data = await res.json()
 
   return {
     movies: data.items,
-    list: {
-      listTitle: data.name,
-      listID: data.id,
-    },
+    listTitle: data.name,
+    listID: data.id,
   }
 }
 

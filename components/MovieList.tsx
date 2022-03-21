@@ -24,17 +24,18 @@ type Movie = {
 type List = {
   listTitle: string
   listID: number
-}
-
-interface MovieListProps {
-  list: List
   movies: Movie[]
 }
 
-const MovieList: FC<MovieListProps> = ({ list, movies }) => {
+interface MovieListProps {
+  listTitle: List['listTitle']
+  listID: List['listID']
+  movies: List['movies']
+}
+
+const MovieList: FC<MovieListProps> = ({ listTitle, movies, listID }) => {
   const [width, setWidth] = useState(0)
   const carrousel = useRef<HTMLDivElement>(null)
-  const { listTitle, listID } = list
 
   useEffect(() => {
     // carrousel.current.scrollWidth is the total width of available scrolling

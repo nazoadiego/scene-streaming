@@ -1,11 +1,5 @@
-const NavItem = (props) => {
-  return (
-    <li className="nav-item">
-      <a href="#" className="mr-2 tracking-widest">
-        {props.children}
-      </a>
-    </li>
-  )
+const NavItem = ({ children }) => {
+  return <li className="nav-item mr-2">{children}</li>
 }
 
 export default NavItem
