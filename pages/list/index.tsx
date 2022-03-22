@@ -53,7 +53,7 @@ const ListPage: NextPage<ListPageProps> = ({ listTitle, movies }) => {
         <ul
           className="grid grid-cols-[16rem] grid-rows-[24rem_24rem_24rem] gap-2
           sm:grid-cols-2 sm:grid-rows-[26rem_26rem_26rem_26rem_26rem]
-          lg:grid-cols-4 lg:grid-rows-[30rem_30rem]
+          lg:grid-cols-4 lg:grid-rows-[30rem_30rem_]
           2xl:grid-cols-4 2xl:grid-rows-[60rem_60rem]"
         >
           {currentMovies.map((movie) => (
