@@ -36,7 +36,7 @@ interface ListPageProps {
 
 const ListPage: NextPage<ListPageProps> = ({ listTitle, movies }) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(12)
+  const [postsPerPage, setPostsPerPage] = useState(10)
 
   // pagination
   const indexLastPost = currentPage * postsPerPage // page 1 * 12 is 12, page 2 * 12 is 24
@@ -50,9 +50,14 @@ const ListPage: NextPage<ListPageProps> = ({ listTitle, movies }) => {
     <Layout>
       <div>
         <h2>{listTitle}</h2>
-        <ul className="grid grid-cols-6 gap-2">
+        <ul
+          className="grid grid-cols-[16rem] grid-rows-[24rem_24rem_24rem] gap-2
+          sm:grid-cols-2 sm:grid-rows-[26rem_26rem_26rem_26rem_26rem]
+          lg:grid-cols-4 lg:grid-rows-[30rem_30rem]
+          2xl:grid-cols-4 2xl:grid-rows-[60rem_60rem]"
+        >
           {currentMovies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id}></MovieCard>
+            <MovieCard movie={movie} key={movie.id} isGrid={true}></MovieCard>
           ))}
         </ul>
         <Pagination

@@ -21,17 +21,23 @@ type Movie = {
 
 interface MovieCardProps {
   movie: Movie
+  isGrid?: boolean
 }
 
-const MovieCard: FC<MovieCardProps> = ({ movie }) => {
+const MovieCard: FC<MovieCardProps> = ({ movie, isGrid }) => {
   const { poster_path } = movie
+
+  const styles = {
+    backgroundImage: `url(https://image.tmdb.org/t/p/w500/${poster_path})`,
+    minHeight: isGrid ? '0' : '24rem',
+    minWidth: isGrid ? '0' : '18rem',
+  }
+
   return (
     <>
       <motion.div
-        className="item rounded-xl bg-cover bg-center"
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${poster_path})`,
-        }}
+        className="rounded-xl bg-cover bg-center"
+        style={styles}
       ></motion.div>
     </>
   )
