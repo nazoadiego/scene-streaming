@@ -1,6 +1,10 @@
-import { useState } from 'react'
+import { useState, FC } from 'react'
 
-const DropdownButton = (props) => {
+interface DropdownButtonProps {
+  icon: string
+}
+
+const DropdownButton: FC<DropdownButtonProps> = (props) => {
   const [open, setOpen] = useState(false)
 
   return (

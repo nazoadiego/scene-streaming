@@ -1,5 +1,17 @@
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-  const pageNumbers = []
+import { FC } from 'react'
+
+interface PaginationProps {
+  postsPerPage: number
+  totalPosts: number
+  paginate: (pageNumber: number) => void
+}
+
+const Pagination: FC<PaginationProps> = ({
+  postsPerPage,
+  totalPosts,
+  paginate,
+}) => {
+  const pageNumbers: number[] = []
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i)
