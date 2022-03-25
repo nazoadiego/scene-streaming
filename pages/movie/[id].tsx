@@ -28,9 +28,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const requestedMovies: [][] = []
-  const list1 = (await getMoviesList(1)) || []
-  const list2 = (await getMoviesList(2)) || []
-  const list3 = (await getMoviesList(3)) || []
+  const list1 = (await getMoviesList('1')) || []
+  const list2 = (await getMoviesList('2')) || []
+  const list3 = (await getMoviesList('3')) || []
 
   requestedMovies.push(list1.movies, list2.movies, list3.movies)
 

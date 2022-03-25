@@ -10,7 +10,7 @@ const FourOFourPage: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       router.back()
-    }, 1000)
+    }, 3000)
   }, [])
 
   return (

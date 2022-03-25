@@ -31,9 +31,9 @@ const Home: NextPage<HomeProps> = ({ lists }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const lists = []
-  const list = (await getMoviesList(1)) || []
-  const list2 = (await getMoviesList(2)) || []
-  const list3 = (await getMoviesList(3)) || []
+  const list = (await getMoviesList('1')) || []
+  const list2 = (await getMoviesList('2')) || []
+  const list3 = (await getMoviesList('3')) || []
 
   lists.push(list, list2, list3)
 
