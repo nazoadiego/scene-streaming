@@ -18,7 +18,7 @@ const MovieCard: FC<MovieCardProps> = ({ movie, isGrid }) => {
   }
 
   return (
-    <Link href={`movie/${movie.id}`}>
+    <Link href={`/movie/${movie.id}`}>
       <motion.div className="rounded-xl bg-cover bg-center" style={styles}>
         <a></a>
       </motion.div>

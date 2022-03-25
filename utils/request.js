@@ -13,6 +13,17 @@ export const getMoviesList = async (listID) => {
   }
 }
 
+export const getMovie = async (movieID) => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieID}?api_key=${API_Key}&language=en-US`
+  )
+  const data = await res.json()
+
+  return {
+    movies: data,
+  }
+}
+
 // export default {
 //   fetchTrending: {
 //     title: 'Trending',
