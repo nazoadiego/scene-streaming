@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 import Layout from '../components/Layout'
 import { getMoviesList } from '../utils/request'
 import type { List } from '../types/index'
+import SearchBar from '../components/SearchBar'
 
 interface HomeProps {
   lists: List[]
@@ -12,6 +13,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ lists }) => {
   return (
     <Layout>
+      <SearchBar />
       <div className="h-[60vh] w-auto">
         <Hero />
       </div>
