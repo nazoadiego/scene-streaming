@@ -71,7 +71,7 @@ const SearchBar: FC<SearchBarProps> = () => {
       ref={parentRef}
     >
       <div className="search-input-container">
-        <span className="search-icons" onClick={expand}>
+        <span className="search-icons" onClick={expandContainer}>
           <IoSearch />
         </span>
         <input
