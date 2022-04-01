@@ -48,7 +48,9 @@ const SearchBar: FC<SearchBarProps> = () => {
   }
 
   useEffect(() => {
-    if (isClickedOutside) collapseContainer()
+    if (isClickedOutside) {
+      collapseContainer()
+    }
   }, [isClickedOutside])
 
   const handleChange = (e) => {
@@ -69,7 +71,7 @@ const SearchBar: FC<SearchBarProps> = () => {
       ref={parentRef}
     >
       <div className="search-input-container">
-        <span className="search-icons" onClick={expandContainer}>
+        <span className="search-icons" onClick={expand}>
           <IoSearch />
         </span>
         <input
