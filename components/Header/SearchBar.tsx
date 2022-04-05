@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { FC, useState, useEffect, useRef } from 'react'
+import { FC, useState, useEffect, useRef, MutableRefObject } from 'react'
 import { IoSearch, IoClose } from 'react-icons/io5'
 import { useClickOutside } from 'react-click-outside-hook'
 import { MoonLoader } from 'react-spinners'
@@ -26,15 +26,11 @@ const containerVariants = {
 
 const containerTransition = { type: 'spring', damping: 22, stiffness: 150 }
 
-const combineArray = (finalArray, addedArray) => {
-  return [].concat(finalArray, addedArray)
-}
-
 const SearchBar: FC<SearchBarProps> = () => {
   const router = useRouter()
   const [isExpanded, setIsExpanded] = useState(false)
   const [parentRef, isClickedOutside] = useClickOutside()
-  const inputRef = useRef()
+  const inputRef: MutableRefObject<HTMLInputElement | null> = useRef(null)
 
   const expandContainer = () => {
     setIsExpanded(true)
@@ -55,7 +51,6 @@ const SearchBar: FC<SearchBarProps> = () => {
 
   const handleChange = (e) => {
     const searchQuery = e.target.value.toLowerCase()
-    router.push('/search')
 
     // setFilteredMovies(
     //   movies.filter((movie) => movie.title.toLowerCase().includes(searchQuery))
@@ -79,7 +74,6 @@ const SearchBar: FC<SearchBarProps> = () => {
           className="search-input"
           placeholder="Search movies"
           ref={inputRef}
-          onChange={handleChange}
         />
         <AnimatePresence>
           {isExpanded && (
