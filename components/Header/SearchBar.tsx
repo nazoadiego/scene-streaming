@@ -49,13 +49,13 @@ const SearchBar: FC<SearchBarProps> = () => {
     }
   }, [isClickedOutside])
 
-  const handleChange = (e) => {
-    const searchQuery = e.target.value.toLowerCase()
+  // const handleChange = (e) => {
+  //   const searchQuery = e.target.value.toLowerCase()
 
-    // setFilteredMovies(
-    //   movies.filter((movie) => movie.title.toLowerCase().includes(searchQuery))
-    // )
-  }
+  //   // setFilteredMovies(
+  //   //   movies.filter((movie) => movie.title.toLowerCase().includes(searchQuery))
+  //   // )
+  // }
 
   return (
     <motion.div
@@ -74,6 +74,8 @@ const SearchBar: FC<SearchBarProps> = () => {
           className="search-input"
           placeholder="Search movies"
           ref={inputRef}
+          onFocus={() => router.push('/search')}
+          // onHandleChange={handleChange}
         />
         <AnimatePresence>
           {isExpanded && (

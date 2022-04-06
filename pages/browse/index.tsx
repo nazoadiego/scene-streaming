@@ -11,7 +11,7 @@ interface BrowsePageProps {
 
 const BrowsePage: NextPage<BrowsePageProps> = ({ lists }) => {
   return (
-    <Layout>
+    <>
       <div className="h-[60vh] w-auto">
         <Hero />
       </div>
@@ -25,7 +25,7 @@ const BrowsePage: NextPage<BrowsePageProps> = ({ lists }) => {
           />
         ))}
       </div>
-    </Layout>
+    </>
   )
 }
 

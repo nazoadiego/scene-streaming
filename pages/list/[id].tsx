@@ -14,7 +14,7 @@ interface ListPageProps {
 
 const ListPage: NextPage<ListPageProps> = ({ listTitle, listID, movies }) => {
   return (
-    <Layout>
+    <>
       <Link href="/">Home</Link>
       <h1>{listTitle}</h1>
       <ul className="grid grid-cols-4 gap-8">
@@ -24,7 +24,7 @@ const ListPage: NextPage<ListPageProps> = ({ listTitle, listID, movies }) => {
           </li>
         ))}
       </ul>
-    </Layout>
+    </>
   )
 }
 

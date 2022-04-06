@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
-import Layout from '../../components/Layout'
 import { getMoviesList, getMovie } from '../../utils/request'
 import type { Movie } from '../../types/index'
 import type { GetStaticProps, GetStaticPaths } from 'next'
@@ -11,11 +10,11 @@ interface MoviePageProps {
 
 const MoviePage: NextPage<MoviePageProps> = ({ movie }) => {
   return (
-    <Layout>
+    <>
       <Link href="/">Go Home</Link>
       <h1>{movie.title}</h1>
       <p>{movie.overview}</p>
-    </Layout>
+    </>
   )
 }
 

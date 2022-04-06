@@ -24,7 +24,7 @@ const ListPage: NextPage<ListPageProps> = ({ listTitle, movies }) => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
-    <Layout>
+    <>
       <div>
         <h2>{listTitle}</h2>
         <ul
@@ -43,12 +43,12 @@ const ListPage: NextPage<ListPageProps> = ({ listTitle, movies }) => {
           paginate={paginate}
         />
       </div>
-    </Layout>
+    </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const list = (await getMoviesList(1)) || []
+  const list = (await getMoviesList('1')) || []
 
   return { props: list }
 }
