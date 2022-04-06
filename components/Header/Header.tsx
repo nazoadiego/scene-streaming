@@ -15,6 +15,11 @@ const Header = () => {
           </Link>
         </NavItem>
         <NavItem>
+          <Link href="/browse" passHref>
+            Browse
+          </Link>
+        </NavItem>
+        <NavItem>
           <Link href="/list">Lists</Link>
         </NavItem>
         <NavItem>

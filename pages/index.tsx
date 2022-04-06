@@ -1,43 +1,19 @@
-import type { GetStaticProps, NextPage } from 'next'
-import MovieList from '../components/MovieList'
-import Hero from '../components/Hero'
+import Link from 'next/link'
+import { NextPage } from 'next/types'
 import Layout from '../components/Layout'
-import { getMoviesList } from '../utils/request'
-import type { List } from '../types/index'
 
-interface HomeProps {
-  lists: List[]
-}
-
-const Home: NextPage<HomeProps> = ({ lists }) => {
+const HomePage: NextPage = () => {
   return (
     <Layout>
-      <div className="h-[60vh] w-auto">
-        <Hero />
-      </div>
-      <div className="space-y-6">
-        {lists.map((list) => (
-          <MovieList
-            movies={list.movies}
-            listTitle={list.listTitle}
-            listID={list.listID}
-            key={list.listID}
-          />
-        ))}
+      <div className="flex h-screen w-full items-center justify-center">
+        <Link href={'/browse'}>
+          <button className="rounded-xl bg-white p-4">
+            <h2 className="text-xl font-extralight text-black">Browse</h2>
+          </button>
+        </Link>
       </div>
     </Layout>
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const lists = []
-  const list = (await getMoviesList('1')) || []
-  const list2 = (await getMoviesList('2')) || []
-  const list3 = (await getMoviesList('3')) || []
-
-  lists.push(list, list2, list3)
-
-  return { props: { lists: lists } }
-}
-
-export default Home
+export default HomePage
